@@ -1,0 +1,5 @@
+roles:
+  - ndkprd.routeros_backup
+
+collections:
+  - community.routeros

@@ -1,0 +1,25 @@
+---
+
+- name: Export Mikrotik configuration.
+  ansible.builtin.shell: >
+    sshpass -p {{ ansible_password }} ssh
+    -o StrictHostKeyChecking=no
+    -o HostKeyAlgorithms=+ssh-rsa
+    -o PubkeyAcceptedKeyTypes=+ssh-rsa
+    {{ ansible_user }}@{{ ansible_host }}
+    "/export compact"
+  changed_when: false
+  register: mikrotik_export
+
+- name: Debug out Mikrotik IP addresses.
+  ansible.builtin.debug:
+    var: mikrotik_export.stdout
+  tags: [debug]
+
+- name: Convert it into file.
+  become: true
+  ansible.builtin.copy:
+    content: "{{ mikrotik_export.stdout }}"
+    dest: "{{ backup_dir }}/{{ ansible_timestamp }} {{ inventory_hostname }}.conf"
+    mode: "775"
+    owner: "{{ backup_dir_owner }}"

@@ -1,0 +1,5 @@
+[routeros]
+rou-01.ndkprd.com ansible-host=rou-01.ndkprd.com
+
+[mikrotik:children]
+routeros

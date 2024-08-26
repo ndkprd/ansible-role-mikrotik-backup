@@ -1,0 +1,6 @@
+.vscode
+tests/test.yaml
+tests/group_vars
+tests/host_vars
+tests/hosts
+tests/netbox_hosts.yaml

@@ -1,0 +1,9 @@
+---
+
+- name: Run the role.
+  hosts: all
+  become: false
+  gather_facts: true
+
+  roles:
+    - ndkprd.mikrotik_backup

@@ -1,0 +1,9 @@
+---
+
+- name: Run the preresquite tasks.
+  ansible.builtin.import_tasks: mikrotik_preresquite.yaml
+  tags: [mikrotik, preresquite]
+
+- name: Run the Mikrotik backup tasks.
+  ansible.builtin.import_tasks: mikrotik_backup.yaml
+  tags: [mikrotik, backup]
